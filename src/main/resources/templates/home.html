@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <title>Text as colors</title>
 
-    <script>
-        document.getElementById("p2").style.color = "green";
-    </script>
-
 </head>
     <body>
         <form id="pasteBox" action="/paste" method="post">
@@ -17,11 +13,13 @@
         </form>
 
         <div>
-            Word : Hex color value
+            Word : Color value
 
-            <p id="p2">
+            <p>
                 {{#results}}
+                <span class="changedColor" style="color: #{{value}}">
                 {{text}} : {{value}}</br>
+                </span>
                 {{/results}}
             </p>
 
