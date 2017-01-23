@@ -1,5 +1,6 @@
 package colors.controllers;
 
+import colors.Word;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
+import colors.converters.*;
+import colors.consoleColors.*;
 
 @Controller
 public class DisplayGetController {
@@ -20,7 +25,11 @@ public class DisplayGetController {
     public String displayResults(HttpSession session, Model model) throws FileNotFoundException {
         String rawText = (String) session.getAttribute("rawText");
 
-        //model.addAttribute("results",results);
+        ArrayList<Word> hexes = TextToByte.textToByte(rawText);
+
+        PrintConsoleColors.printConsoleColors(hexes);
+
+        model.addAttribute("results", hexes);
         return ("home");
     }
 }
