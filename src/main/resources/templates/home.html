@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Text as colors</title>
-</head>
-<body>
 
-</body>
+    <script>
+        document.getElementById("p2").style.color = "green";
+    </script>
+
+</head>
+    <body>
+        <form id="pasteBox" action="/paste" method="post">
+            <input type="text" name="document"/>
+            <br/>
+            <button type="submit">Submit text</button>
+        </form>
+
+        <div>
+            Word : Hex color value
+
+            <p id="p2">
+                {{#results}}
+                {{text}} : {{value}}</br>
+                {{/results}}
+            </p>
+
+        </div>
+    </body>
 </html>
