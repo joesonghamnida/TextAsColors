@@ -25,11 +25,11 @@ public class DisplayGetController {
     public String displayResults(HttpSession session, Model model) throws FileNotFoundException {
         String rawText = (String) session.getAttribute("rawText");
 
-        ArrayList<Word> hexes = TextToByte.textToByte(rawText);
+        ArrayList<Word> bytes = TextToByte.textToByte(rawText);
 
-        PrintConsoleColors.printConsoleColors(hexes);
+        PrintConsoleColors.printConsoleColors(bytes);
 
-        model.addAttribute("results", hexes);
+        model.addAttribute("results", bytes);
         return ("home");
     }
 }
