@@ -15,7 +15,7 @@ public class NumberConversionTests {
     @Test
     //using ascii
     public void convertBytesToBinary(){
-        String testString = "a";
+        String testString = "a"; //97
         int testStringValue = 0;
         ArrayList<Word> words = TextToByte.textToByte(testString);
         for(Word word : words){
@@ -28,11 +28,13 @@ public class NumberConversionTests {
 
     @Test
     public void convertBytesToOctal(){
-
+        //System.out.println(ConvertNumberBase.convertToOctal(97));
+        Assert.assertTrue("141".equals(ConvertNumberBase.convertToOctal(97)));
     }
 
     @Test
     public void convertBytesToHex(){
-
+        //System.out.println(ConvertNumberBase.convertToHex(97));
+        Assert.assertTrue("61".equals(ConvertNumberBase.convertToHex(97)));
     }
 }
