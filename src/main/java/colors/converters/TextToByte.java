@@ -12,7 +12,7 @@ public class TextToByte {
 
     public static ArrayList<Word> textToByte(String rawText){
 
-        ArrayList<Word> hexArrayList = new ArrayList<>();
+        ArrayList<Word> byteArrayList = new ArrayList<>();
         int holding = 0;
 
         String[] words = splitString(rawText);
@@ -22,9 +22,9 @@ public class TextToByte {
             for (Byte b : bytes){
                 holding = holding + b;
             }
-            hexArrayList.add(new Word(words[i],holding));
+            byteArrayList.add(new Word(words[i],holding));
         }
-        return hexArrayList;
+        return byteArrayList;
     }
 
     public static String[] splitString(String rawText){
