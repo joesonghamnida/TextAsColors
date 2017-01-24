@@ -17,7 +17,13 @@ public class TextToByte {
 
         String[] words = splitString(rawText);
 
-        
+        for(int i = 0; i < words.length;i++){
+            byte[] bytes = words[i].getBytes();
+            for (Byte b : bytes){
+                holding = holding + b;
+            }
+            byteArrayList.add(new Word(words[i],holding));
+        }
         return byteArrayList;
     }
 
