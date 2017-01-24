@@ -6,6 +6,7 @@ package colors.converters;
 public class ConvertNumberBase {
 
     //using ascii
+    //for the moment have to run on individual characters
     public static String convertToBinary(int value){
         String binary = "";
         int denominator = 128;
@@ -13,7 +14,7 @@ public class ConvertNumberBase {
             int remainder = value % (denominator);
             int placeHolder = remainder;
 
-            remainder = checkRemainder(remainder, value);
+            remainder = checkBinaryRemainder(remainder, value);
             binary += String.valueOf(remainder);
 
             value = placeHolder;
@@ -22,7 +23,7 @@ public class ConvertNumberBase {
         return binary;
     }
 
-    public static int checkRemainder(int remainder, int value){
+    public static int checkBinaryRemainder(int remainder, int value){
         if(remainder == value){
             remainder = 0;
         }
@@ -32,11 +33,13 @@ public class ConvertNumberBase {
         return remainder;
     }
 
-    public static void convertToOctal(){
-
+    public static String convertToOctal(int value){
+        String octal = Integer.toOctalString(value);
+        return octal;
     }
 
-    public static void convertToHex(){
-
+    public static String convertToHex(int value){
+        String hex = Integer.toHexString(value);
+        return hex;
     }
 }
