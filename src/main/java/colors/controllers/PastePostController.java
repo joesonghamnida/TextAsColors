@@ -14,14 +14,8 @@ import javax.servlet.http.HttpSession;
 public class PastePostController {
 
     @RequestMapping(path = "/paste", method = RequestMethod.POST)
-    public String pasteText(HttpSession session, String document, String conversion) {
+    public String pasteText(HttpSession session, String document) {
         session.setAttribute("rawText", document);
-
-        if(conversion.isEmpty()){
-            conversion="Decimal";
-        }
-
-        session.setAttribute("conversion",conversion);
 
         return "redirect:/displayResults";
     }
