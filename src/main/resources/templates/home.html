@@ -9,23 +9,21 @@
         <form id="pasteBox" action="/paste" method="post">
             <input type="text" placeholder="text" name="document"/>
             <br/>
-            <select name="conversion">
-                <option selected disabled>Number system</option>
-                <option value="Decimal">Decimal</option>
-                <option value="Binary">Binary</option>
-                <option value="Octal">Octal</option>
-                <option value="Hex">Hex</option>
-            </select>
             <button type="submit">Submit text</button>
         </form>
 
         <div>
-            Word : Color value
 
             <p>
                 {{#results}}
-                <span class="changedColor" style="color: #{{value}}">
-                {{text}} : {{value}}</br>
+                <span class="changedColor" style="color: #{{asciiValue}}">
+                    <p>
+                        Word: {{text}}</br>
+                        Ascii: {{asciiValue}}</br>
+                        Binary: {{binaryValue}} </br>
+                        Octal: {{octalValue}}</br>
+                        Hex: {{hexValue}}</br>
+                    </p>
                 </span>
                 {{/results}}
             </p>
