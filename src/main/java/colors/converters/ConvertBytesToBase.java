@@ -10,42 +10,40 @@ import java.util.ArrayList;
  */
 public class ConvertBytesToBase {
 
-    public static ArrayList<Word> convertBytesToBase(ArrayList<Word> bytes, String base) {
+    public static ArrayList<Word> convertBytesToBase(ArrayList<Word> bytes) {
 
         ArrayList<Word> convertedWords = new ArrayList<>();
 
         String convertedValue = "";
         for (Word word : bytes) {
-            if (base.equals("Binary")) {
-                convertedWords.add(convertToBinary(word, convertedValue));
-            } else if (base.equals("Octal")) {
-                convertedWords.add(convertToOctal(word,convertedValue));
-            } else if (base.equals("Hex")) {
-                convertedWords.add(convertToHex(word,convertedValue));
-            }
+                String binary = convertToBinary(word, convertedValue);
+                String octal = convertToOctal(word,convertedValue);
+                String hex = convertToHex(word,convertedValue);
+                convertedWords.add(new Word(word.getText(), word.getAsciiValue(), binary, octal, hex));
+
         }
         return convertedWords;
     }
 
-    public static Word convertToBinary(Word word, String convertedValue) {
+    public static String convertToBinary(Word word, String convertedValue) {
         for (int i = 0; i < word.getText().length(); i++) {
-            convertedValue += ConvertNumberBase.convertToBinary(word.getText().charAt(i));
+            convertedValue += ConvertNumberBase.convertToBinary(word.getText().charAt(i)) + " ";
         }
-        return new Word(word.getText(), convertedValue, word.getAsciiValue(),convertedValue,"0","0");
+        return convertedValue;
     }
 
-    public static Word convertToOctal(Word word, String convertedValue) {
+    public static String convertToOctal(Word word, String convertedValue) {
         for (int i = 0; i < word.getText().length(); i++) {
-            convertedValue += ConvertNumberBase.convertToOctal(word.getText().charAt(i));
+            convertedValue += ConvertNumberBase.convertToOctal(word.getText().charAt(i)) + " ";
         }
-        return new Word(word.getText(), convertedValue, word.getAsciiValue(),"0",convertedValue,"0");
+        return convertedValue;
     }
 
-    public static Word convertToHex(Word word, String convertedValue) {
+    public static String convertToHex(Word word, String convertedValue) {
         for (int i = 0; i < word.getText().length(); i++) {
-            convertedValue += ConvertNumberBase.convertToHex(word.getText().charAt(i));
+            convertedValue += ConvertNumberBase.convertToHex(word.getText().charAt(i)) + " ";
         }
-        return new Word(word.getText(), convertedValue, word.getAsciiValue(),"0","0",convertedValue);
+        return convertedValue;
     }
 }
 
