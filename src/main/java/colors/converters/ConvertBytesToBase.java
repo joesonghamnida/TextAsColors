@@ -10,39 +10,42 @@ import java.util.ArrayList;
  */
 public class ConvertBytesToBase {
 
-    public static void convertBytesToBase(ArrayList<Word> bytes, String base) {
+    public static ArrayList<Word> convertBytesToBase(ArrayList<Word> bytes, String base) {
+
+        ArrayList<Word> convertedWords = new ArrayList<>();
 
         String convertedValue = "";
         for (Word word : bytes) {
             if (base.equals("Binary")) {
-                convertToBinary(word, convertedValue);
+                convertedWords.add(convertToBinary(word, convertedValue));
             } else if (base.equals("Octal")) {
-                convertToOctal(word,convertedValue);
+                convertedWords.add(convertToOctal(word,convertedValue));
             } else if (base.equals("Hex")) {
-                convertToHex(word,convertedValue);
+                convertedWords.add(convertToHex(word,convertedValue));
             }
         }
+        return convertedWords;
     }
 
-    public static void convertToBinary(Word word, String convertedValue) {
+    public static Word convertToBinary(Word word, String convertedValue) {
         for (int i = 0; i < word.getText().length(); i++) {
             convertedValue += ConvertNumberBase.convertToBinary(word.getText().charAt(i));
         }
-        word.setValue(convertedValue);
+        return new Word(word.getText(), convertedValue, word.getAsciiValue(),convertedValue,"0","0");
     }
 
-    public static void convertToOctal(Word word, String convertedValue) {
+    public static Word convertToOctal(Word word, String convertedValue) {
         for (int i = 0; i < word.getText().length(); i++) {
             convertedValue += ConvertNumberBase.convertToOctal(word.getText().charAt(i));
         }
-        word.setValue(convertedValue);
+        return new Word(word.getText(), convertedValue, word.getAsciiValue(),"0",convertedValue,"0");
     }
 
-    public static void convertToHex(Word word, String convertedValue) {
+    public static Word convertToHex(Word word, String convertedValue) {
         for (int i = 0; i < word.getText().length(); i++) {
             convertedValue += ConvertNumberBase.convertToHex(word.getText().charAt(i));
         }
-        word.setValue(convertedValue);
+        return new Word(word.getText(), convertedValue, word.getAsciiValue(),"0","0",convertedValue);
     }
 }
 
