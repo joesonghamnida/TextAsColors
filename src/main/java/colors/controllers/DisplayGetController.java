@@ -24,10 +24,12 @@ public class DisplayGetController {
     @RequestMapping(path = "/displayResults", method = RequestMethod.GET)
     public String displayResults(HttpSession session, Model model) throws FileNotFoundException {
         String rawText = (String) session.getAttribute("rawText");
+        String converison = (String) session.getAttribute("conversion");
 
         ArrayList<Word> bytes = TextToByte.textToByte(rawText);
+        //PrintConsoleColors.printConsoleColors(bytes);
 
-        PrintConsoleColors.printConsoleColors(bytes);
+        ConvertBytesToBase.convertBytesToBase(bytes,converison);
 
         model.addAttribute("results", bytes);
         return ("home");
