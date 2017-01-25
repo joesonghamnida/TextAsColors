@@ -7,8 +7,15 @@
 </head>
     <body>
         <form id="pasteBox" action="/paste" method="post">
-            <input type="text" name="document"/>
+            <input type="text" placeholder="text" name="document"/>
             <br/>
+            <select name="conversion">
+                <option selected disabled>Number system</option>
+                <option value="Decimal">Decimal</option>
+                <option value="Binary">Binary</option>
+                <option value="Octal">Octal</option>
+                <option value="Hex">Hex</option>
+            </select>
             <button type="submit">Submit text</button>
         </form>
 
