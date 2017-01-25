@@ -5,7 +5,6 @@ package colors;
  */
 public class Word {
     private String text;
-    private String value;
     private int asciiValue;
     private String binaryValue;
     private String octalValue;
@@ -19,9 +18,8 @@ public class Word {
         this.asciiValue = asciiValue;
     }
 
-    public Word(String text, String value, int asciiValue, String binaryValue, String octalValue, String hexValue) {
+    public Word(String text, int asciiValue, String binaryValue, String octalValue, String hexValue) {
         this.text = text;
-        this.value = value;
         this.asciiValue = asciiValue;
         this.binaryValue = binaryValue;
         this.octalValue = octalValue;
@@ -34,14 +32,6 @@ public class Word {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 
     public int getAsciiValue() {
