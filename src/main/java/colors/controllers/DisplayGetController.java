@@ -29,9 +29,9 @@ public class DisplayGetController {
         ArrayList<Word> bytes = TextToByte.textToByte(rawText);
         //PrintConsoleColors.printConsoleColors(bytes);
 
-        ConvertBytesToBase.convertBytesToBase(bytes,converison);
+        ArrayList<Word> convertedBytes = ConvertBytesToBase.convertBytesToBase(bytes,converison);
 
-        model.addAttribute("results", bytes);
+        model.addAttribute("results", convertedBytes);
         return ("home");
     }
 }
